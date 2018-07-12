@@ -91,6 +91,9 @@ void setup()
   // configure all pin modes
   configure_pins();
 
+  // initialize all pins
+  initialize_pins();
+
   // board initialization - ok!
   initialization_ok();
 
@@ -125,11 +128,11 @@ void loop()
 void initialization_ok()
 {
   analogWrite(led_b_pin, 0);
-  delay(500);
+  delay(1000);
   analogWrite(led_b_pin, 255);
-  delay(250);
+  delay(500);
   analogWrite(led_b_pin, 0);
-  delay(500)
+  delay(1000);
   analogWrite(led_b_pin, 255);
 }
 
