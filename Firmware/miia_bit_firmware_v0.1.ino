@@ -349,7 +349,7 @@ void motor_control(int motor_forward_pin, int motor_reverse_pin, int speed)
 // function to control a buzzer
 void sound_buzzer(int frequency)
 {
-  continue;
+
 }
 
 //end
