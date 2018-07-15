@@ -40,25 +40,25 @@ void sending();
 
 // pin assignments
 // servo motor
-#define servo_arm_pin 3 // 1
+#define servo_arm_pin 3
 
 // ultrasonic sensor
-#define uss_trigger_pin 17 // 26
-#define uss_echo_pin 18 // 27
+#define uss_trigger_pin 17
+#define uss_echo_pin 18
 
 // RBG LED
-#define led_r_pin 14 // 23
-#define led_g_pin 15 // 24
-#define led_b_pin 16 // 25
+#define led_r_pin 14
+#define led_g_pin 15 
+#define led_b_pin 16 
 
 // DC motors
-#define motor_a_forward_pin 5
-#define motor_a_reverse_pin 6
-#define motor_b_forward_pin 13
-#define motor_b_reverse_pin 14
+#define motor_a_forward_pin 9
+#define motor_a_reverse_pin 10
+#define motor_b_forward_pin 5
+#define motor_b_reverse_pin 6
 
 // buzzer
-#define buzzer_pin A6 // 20 //19 
+#define buzzer_pin 8 
 
 // push button
 #define push_button_pin 19
@@ -77,10 +77,10 @@ const long interval = 10000;
 
 int current_byte = 0;
 int prev_byte = 0;
-int analog1 = 1;
-int analog2 = 2;
-int analog3 = 3;
-int analog4 = 4;
+int analog1 = 0;
+int analog2 = 0;
+int analog3 = 0;
+int analog4 = 0;
 
 unsigned long previousMillis = 0;
 unsigned long currentMillis;
@@ -127,12 +127,20 @@ void loop()
 // board initialization - ok!: led blue flash twice
 void initialization_ok()
 {
+  analogWrite(led_r_pin, 255);
+  analogWrite(led_g_pin, 255);
   analogWrite(led_b_pin, 0);
   delay(1000);
+  analogWrite(led_r_pin, 255);
+  analogWrite(led_g_pin, 255);
   analogWrite(led_b_pin, 255);
   delay(500);
+  analogWrite(led_r_pin, 255);
+  analogWrite(led_g_pin, 255);
   analogWrite(led_b_pin, 0);
   delay(1000);
+  analogWrite(led_r_pin, 255);
+  analogWrite(led_g_pin, 255);
   analogWrite(led_b_pin, 255);
 }
 
@@ -232,9 +240,15 @@ void outputs_set()
 // function to send information to LoFi program
 void sending()
 {
+  // first read and send the analog inputs
   // even if not using analog inputs, LoFi requires this.
+
+  // push button is Analog Input 1
+  analog1 = analogRead(push_button_pin)/10.23;
   Serial.write(224);
   Serial.write(byte(analog1));
+  
+  // other analog inputs currently not used
   Serial.write(225);
   Serial.write(byte(analog2));
   Serial.write(226);
@@ -273,6 +287,9 @@ void configure_pins()
 
   // buzzer
   pinMode(buzzer_pin, OUTPUT);
+
+  // button
+  pinMode(push_button_pin, INPUT);
 }
 
 // function to set the default pin states
@@ -332,7 +349,7 @@ void motor_control(int motor_forward_pin, int motor_reverse_pin, int speed)
 // function to control a buzzer
 void sound_buzzer(int frequency)
 {
-
+  continue;
 }
 
 //end
