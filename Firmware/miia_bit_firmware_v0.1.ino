@@ -64,7 +64,7 @@ void sending();
 #define push_button_pin 19
 
 // constants
-#define baud_rate 57600 // nb baud rate must be 57600 for LoFi Blocks
+#define baud_rate 9600 // nb baud rate must be 57600 for LoFi Blocks Chrome
 
 #define servo_calibration_pos 90
 
