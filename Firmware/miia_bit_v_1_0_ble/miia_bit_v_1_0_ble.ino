@@ -71,7 +71,7 @@ int dist;
 // variables for creating delay in sending data
 unsigned long previous_timestamp = 0;
 unsigned long current_timestamp;
-const long time_delay = 5000;
+const long time_delay = 2000;
 
 // create objects
 
@@ -302,10 +302,10 @@ void send_data_to_miicode(void)
   mySerial.write('abc');
   
   if (analogRead(push_button_pin) > 512){
-    input_button = 1;
+    input_button = 0;
   }
   else{
-    input_button = 0;
+    input_button = 1;
   }
   
   mySerial.write(input_button);
