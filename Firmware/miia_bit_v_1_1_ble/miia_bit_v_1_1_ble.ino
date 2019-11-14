@@ -1,6 +1,6 @@
 /* MiiCode Firmware for MiiA.bit Robot
- *  Version 1.0
- *  Date: October 2019
+ *  Version 1.1
+ *  Date: November 2019
  *  Author: Tyrone van Balla
  *  Company: RD9 Solutions
  */
